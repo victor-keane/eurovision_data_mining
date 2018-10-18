@@ -1,0 +1,149 @@
+Finland
+{'best_friends': [], 'close_friends': ['Estonia', 'Andorra'], 'acquaintances': ['Iceland']}
+
+France
+{'best_friends': ['Armenia'], 'close_friends': ['Andorra'], 'acquaintances': ['Monaco']}
+
+Germany
+{'best_friends': [], 'close_friends': [], 'acquaintances': []}
+
+Ireland
+{'best_friends': [], 'close_friends': ['United Kingdom'], 'acquaintances': []}
+
+Israel
+{'best_friends': [], 'close_friends': ['Azerbaijan'], 'acquaintances': ['France', 'Andorra']}
+
+Italy
+{'best_friends': ['Albania'], 'close_friends': ['Malta', 'Spain'], 'acquaintances': ['Finland', 'Portugal', 'Switzerland', 'Turkey', 'Yugoslavia', 'San Marino', 'Montenegro']}
+
+Luxembourg
+{'best_friends': [], 'close_friends': [], 'acquaintances': []}
+
+Malta
+{'best_friends': [], 'close_friends': [], 'acquaintances': ['United Kingdom', 'Azerbaijan']}
+
+Monaco
+{'best_friends': ['Italy'], 'close_friends': [], 'acquaintances': []}
+
+Norway
+{'best_friends': [], 'close_friends': [], 'acquaintances': ['Sweden', 'Denmark', 'Iceland', 'Estonia', 'Lithuania', 'Belarus']}
+
+Portugal
+{'best_friends': [], 'close_friends': ['Andorra'], 'acquaintances': ['France', 'Spain']}
+
+Spain
+{'best_friends': [], 'close_friends': ['Andorra'], 'acquaintances': []}
+
+Sweden
+{'best_friends': ['Denmark'], 'close_friends': ['Norway', 'Iceland', 'Andorra', 'Australia'], 'acquaintances': ['Finland', 'Estonia']}
+
+Switzerland
+{'best_friends': [], 'close_friends': [], 'acquaintances': []}
+
+The Netherlands
+{'best_friends': [], 'close_friends': [], 'acquaintances': ['Hungary', 'Andorra']}
+
+Turkey
+{'best_friends': ['F.Y.R. Macedonia', 'Romania', 'Albania', 'Bulgaria', 'Azerbaijan'], 'close_friends': ['Bosnia & Herzegovina'], 'acquaintances': []}
+
+United Kingdom
+{'best_friends': [], 'close_friends': ['Australia'], 'acquaintances': ['Ireland', 'Luxembourg', 'Malta']}
+
+Yugoslavia
+{'best_friends': [], 'close_friends': ['Turkey'], 'acquaintances': ['Cyprus', 'Iceland']}
+
+Belgium
+{'best_friends': [], 'close_friends': [], 'acquaintances': ['The Netherlands', 'Slovakia', 'Australia']}
+
+Greece
+{'best_friends': ['Cyprus', 'Albania', 'Bulgaria', 'Armenia'], 'close_friends': ['Romania'], 'acquaintances': ['Serbia']}
+
+Austria
+{'best_friends': [], 'close_friends': [], 'acquaintances': []}
+
+Denmark
+{'best_friends': [], 'close_friends': ['Iceland', 'Australia'], 'acquaintances': ['Norway', 'Sweden', 'Estonia']}
+
+Cyprus
+{'best_friends': ['Greece'], 'close_friends': ['Armenia'], 'acquaintances': ['Yugoslavia', 'Bulgaria']}
+
+Iceland
+{'best_friends': [], 'close_friends': ['Denmark', 'Norway'], 'acquaintances': ['Finland', 'Sweden', 'Hungary']}
+
+Bosnia & Herzegovina
+{'best_friends': ['Croatia', 'Turkey', 'F.Y.R. Macedonia', 'Serbia & Montenegro', 'Montenegro', 'Serbia'], 'close_friends': ['Slovenia', 'Albania'], 'acquaintances': ['Austria', 'Denmark', 'Sweden', 'Switzerland', 'Slovakia', 'Monaco']}
+
+Croatia
+{'best_friends': ['Bosnia & Herzegovina', 'Serbia & Montenegro', 'Montenegro'], 'close_friends': ['Slovenia', 'F.Y.R. Macedonia', 'Serbia'], 'acquaintances': ['Austria', 'Monaco']}
+
+Slovenia
+{'best_friends': ['Bosnia & Herzegovina', 'Montenegro'], 'close_friends': ['Croatia', 'F.Y.R. Macedonia', 'Serbia'], 'acquaintances': []}
+
+Estonia
+{'best_friends': ['Finland', 'Latvia'], 'close_friends': ['Lithuania'], 'acquaintances': ['Ireland']}
+
+Hungary
+{'best_friends': [], 'close_friends': ['Romania', 'Serbia'], 'acquaintances': ['Croatia', 'Czech Republic']}
+
+Lithuania
+{'best_friends': ['Latvia'], 'close_friends': ['Georgia'], 'acquaintances': ['Ireland', 'United Kingdom', 'Belarus', 'Australia']}
+
+Poland
+{'best_friends': [], 'close_friends': ['Germany'], 'acquaintances': ['France', 'Hungary', 'Italy', 'Ukraine', 'Belarus']}
+
+Romania
+{'best_friends': ['Moldova'], 'close_friends': ['Spain', 'Israel'], 'acquaintances': ['Cyprus', 'Portugal', 'Azerbaijan', 'Italy']}
+
+Russia
+{'best_friends': ['Belarus', 'Azerbaijan'], 'close_friends': ['Estonia', 'Lithuania', 'Israel', 'Latvia', 'Ukraine', 'Moldova', 'Armenia'], 'acquaintances': ['Cyprus', 'Czech Republic', 'Montenegro', 'Serbia']}
+
+Slovakia
+{'best_friends': [], 'close_friends': [], 'acquaintances': ['Malta']}
+
+F.Y.R. Macedonia
+{'best_friends': ['Croatia', 'Bosnia & Herzegovina', 'Albania', 'Serbia & Montenegro', 'Serbia'], 'close_friends': ['Slovenia', 'Bulgaria'], 'acquaintances': ['Switzerland', 'Turkey']}
+
+Latvia
+{'best_friends': ['Estonia', 'Lithuania'], 'close_friends': ['Ireland'], 'acquaintances': ['United Kingdom', 'Georgia']}
+
+Ukraine
+{'best_friends': ['Georgia', 'Azerbaijan'], 'close_friends': ['Poland', 'Russia', 'Andorra', 'Belarus', 'Lithuania', 'Moldova', 'Czech Republic', 'Italy'], 'acquaintances': ['Israel', 'Latvia', 'Portugal', 'Serbia & Montenegro', 'Armenia']}
+
+Albania
+{'best_friends': ['Croatia', 'F.Y.R. Macedonia', 'Greece', 'Turkey', 'Montenegro'], 'close_friends': ['Austria', 'Bosnia & Herzegovina', 'Switzerland', 'San Marino'], 'acquaintances': ['Italy']}
+
+Belarus
+{'best_friends': ['Ukraine'], 'close_friends': ['Moldova'], 'acquaintances': ['Latvia', 'Lithuania', 'Russia', 'Armenia', 'Georgia', 'Azerbaijan']}
+
+Andorra
+{'best_friends': ['Spain'], 'close_friends': [], 'acquaintances': []}
+
+Moldova
+{'best_friends': ['Portugal', 'Romania'], 'close_friends': ['Belarus', 'Russia', 'Ukraine', 'Italy', 'Australia'], 'acquaintances': ['Greece', 'Turkey', 'Armenia', 'Azerbaijan']}
+
+Bulgaria
+{'best_friends': ['Turkey'], 'close_friends': ['Albania', 'Cyprus', 'F.Y.R. Macedonia', 'Spain', 'Australia'], 'acquaintances': ['Greece', 'Hungary', 'Norway', 'Azerbaijan']}
+
+Armenia
+{'best_friends': ['Bulgaria', 'Greece', 'Russia', 'Georgia'], 'close_friends': ['Cyprus', 'France', 'Turkey'], 'acquaintances': ['Belarus', 'Belgium', 'Israel', 'The Netherlands', 'Ukraine', 'Czech Republic']}
+
+Georgia
+{'best_friends': ['Armenia', 'Greece', 'Lithuania', 'Russia', 'Turkey', 'Ukraine'], 'close_friends': ['Moldova', 'Azerbaijan'], 'acquaintances': ['Belarus', 'Estonia']}
+
+Serbia
+{'best_friends': ['Bosnia & Herzegovina', 'Croatia', 'F.Y.R. Macedonia', 'Montenegro', 'Slovenia', 'Switzerland'], 'close_friends': ['Austria', 'Italy'], 'acquaintances': ['Czech Republic', 'Sweden']}
+
+Czech Republic
+{'best_friends': [], 'close_friends': [], 'acquaintances': []}
+
+Montenegro
+{'best_friends': ['Bosnia & Herzegovina'], 'close_friends': ['Slovenia'], 'acquaintances': ['Albania']}
+
+Azerbaijan
+{'best_friends': ['Georgia', 'Russia', 'Turkey', 'Ukraine'], 'close_friends': ['Belarus', 'Czech Republic', 'Moldova'], 'acquaintances': ['Bosnia & Herzegovina', 'Cyprus', 'Hungary', 'Montenegro', 'Slovakia']}
+
+San Marino
+{'best_friends': [], 'close_friends': ['Albania'], 'acquaintances': ['Azerbaijan']}
+
+Australia
+{'best_friends': [], 'close_friends': ['Iceland', 'Poland'], 'acquaintances': ['Denmark', 'Hungary', 'Norway', 'Sweden', 'The Netherlands']}
