@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
+from operator import itemgetter
  
 def remove_bad_data(df): 
    return df[df.Duplicate != 'x']
@@ -8,7 +9,7 @@ def remove_bad_data(df):
 def find_average_points_per_contestant(df):
    points_given = {}
    for row in df.itertuples():
-      contestant = row[6] + str(row[1]) + str(row[2])
+      contestant = row[6] + "-" + str(row[3])
       if contestant not in points_given:
          points_given[contestant] = [row[7]]
       else:
@@ -19,8 +20,8 @@ def find_average_points_per_contestant(df):
       average_points[contestant] = sum(points_given[contestant])/(len(points_given[contestant]))
    return average_points
 
-def above_average_given(to_country, stage, year, points, averages):
-   if averages[to_country + str(year) + str(stage)] < points:
+def above_average_given(to_country, contest, points, averages):
+   if averages[to_country + "-" + str(contest)] < points:
       return True
    else:
       return False
@@ -29,7 +30,7 @@ def find_when_countries_gave_above_average_points(df, average_points):
    above_average_dict = {}
    for row in df.itertuples():
       relationship = row[5] + "-" + row[6]
-      above_average = above_average_given(row[6], row[2], row[1], row[7], average_points)
+      above_average = above_average_given(row[6], row[3], row[7], average_points)
       if relationship not in above_average_dict:
          above_average_dict[relationship] = [above_average]
       else:
@@ -59,14 +60,63 @@ def classify_relationship(above_average_dict):
          relationship_dict[to_country]["acquaintances"].append(from_country)
    return relationship_dict
       
-df = pd.read_excel('H:/eurovision/eurovision_song_contest_1975_2017v4.xlsx')
-df = remove_bad_data(df)
+def create_performance_database(df, average, relationship):
+   performances = {}
+   for vote in df.itertuples():
+      contestant = vote[6] + "-" + vote[3]
+      if contestant not in performances:
+         performances[contestant] = [0,0,0,average[contestant]]
+      if vote[6] in relationship: #only not truwe when we didn't have enough data to define their relationships
+         if vote[5] in relationship[vote[6]]["best_friends"]:
+            performances[contestant][0] += 1
+         if vote[5] in relationship[vote[6]]["close_friends"]:
+            performances[contestant][1] += 1
+         if vote[5] in relationship[vote[6]]["acquaintances"]:
+            performances[contestant][2] += 1
+   return performances
+
+def performances_with_position(performances):
+   rankings = {}
+   for performance in performances:
+      context = performance.split('-')
+      country = context[0]
+      stage = context[1]
+      if stage not in rankings:
+         rankings[stage] = []
+      rankings[stage].append([country, performances[performance][3]])
+   for year in rankings:
+      rankings[year] = sorted(rankings[year], key=lambda x: x[1], reverse=True)
+      final_rankings = []
+      for country in rankings[year]:
+         final_rankings.append(country[0])
+      rankings[year] = final_rankings
+   #print(rankings)
+   for performance in performances:
+      context = performance.split('-')
+      country = context[0]
+      stage = context[1]
+      performances[performance].append(round(performances[performance][0]/len(rankings[stage]),2))
+      performances[performance].append(round(performances[performance][1]/len(rankings[stage]),2))
+      performances[performance].append(round(performances[performance][2]/len(rankings[stage]),2))
+      if rankings[stage].index(country) == 0:
+         performances[performance].append(True)
+      else:
+         performances[performance].append(False)
+      if rankings[stage].index(country) < 6:
+         performances[performance].append(True)
+      else:
+         performances[performance].append(False)
+      if rankings[stage].index(country) < 11:
+         performances[performance].append(True)
+      else:
+         performances[performance].append(False)
+   print(performances)
+
+original_df = pd.read_excel('H:/eurovision/eurovision_song_contest_1975_2017v4.xlsx')
+df = remove_bad_data(original_df)
 average_points = find_average_points_per_contestant(df)
 above_average_dict = find_when_countries_gave_above_average_points(df, average_points)
 above_average_dict = remove_new_relationships(above_average_dict)
 relationship_dict = classify_relationship(above_average_dict)
-for i in relationship_dict:
-   print(i)
-   print(relationship_dict[i])
-   print()
-
+performances = create_performance_database(original_df, average_points, relationship_dict)
+performances = performances_with_position(performances)
