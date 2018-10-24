@@ -2,6 +2,7 @@ import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
 from operator import itemgetter
+from scipy.stats import zscore
  
 def remove_bad_data(df): 
    return df[df.Duplicate != 'x']
@@ -90,14 +91,13 @@ def performances_with_position(performances):
       for country in rankings[year]:
          final_rankings.append(country[0])
       rankings[year] = final_rankings
-   #print(rankings)
    for performance in performances:
       context = performance.split('-')
       country = context[0]
       stage = context[1]
-      performances[performance].append(round(performances[performance][0]/len(rankings[stage]),2))
-      performances[performance].append(round(performances[performance][1]/len(rankings[stage]),2))
-      performances[performance].append(round(performances[performance][2]/len(rankings[stage]),2))
+      performances[performance].append(round(performances[performance][0]*100/len(rankings[stage]),2))
+      performances[performance].append(round(performances[performance][1]*100/len(rankings[stage]),2))
+      performances[performance].append(round(performances[performance][2]*100/len(rankings[stage]),2))
       if rankings[stage].index(country) == 0:
          performances[performance].append(True)
       else:
@@ -110,7 +110,30 @@ def performances_with_position(performances):
          performances[performance].append(True)
       else:
          performances[performance].append(False)
-   print(performances)
+   return performances
+   
+def transform_to_df(performances):
+   stages = []
+   df_list = []
+   column_list = ["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%", "Winner", "Top 5", "Top 10"]
+   i = -1
+   for performance in performances:
+      context = performance.split('-')
+      country = context[0]
+      stage = context[1]
+      if stage not in stages:
+         stages.append(stage)
+         df = pd.DataFrame(columns = column_list)
+         df_list.append(df)
+         i += 1
+      performances[performance].insert(0, country)
+      performances[performance].insert(0, stage)
+      del performances[performance][5]
+      df2 = pd.DataFrame(data =[performances[performance]], columns = column_list)
+      df_list[i] = df_list[i].append(df2)
+   for df in df_list:
+      df[["Best friends","Close Friends", "Acquaintance"]] = df[["Best friends","Close Friends", "Acquaintance"]].apply(zscore)
+      print(df)
 
 original_df = pd.read_excel('H:/eurovision/eurovision_song_contest_1975_2017v4.xlsx')
 df = remove_bad_data(original_df)
@@ -120,3 +143,4 @@ above_average_dict = remove_new_relationships(above_average_dict)
 relationship_dict = classify_relationship(above_average_dict)
 performances = create_performance_database(original_df, average_points, relationship_dict)
 performances = performances_with_position(performances)
+performance_df = transform_to_df(performances)
