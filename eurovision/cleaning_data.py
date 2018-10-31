@@ -133,9 +133,37 @@ def transform_to_df(performances):
       df_list[i] = df_list[i].append(df2)
    for df in df_list:
       df[["Best friends","Close Friends", "Acquaintance"]] = df[["Best friends","Close Friends", "Acquaintance"]].apply(zscore)
-      print(df)
+      #print(df)
+   #print (df_list[0:len(df_list)-3])
+   final_2017 = (df_list[-3])
+   finalsf1_2017 = (df_list[-2])
+   finalsf2_2017 = (df_list[-1])
+   return df_list
 
-original_df = pd.read_excel('H:/eurovision/eurovision_song_contest_1975_2017v4.xlsx')
+def GetScores(table):
+   test = (table[-3])
+   data = (table[0:len(table)-3])
+   for i in range(len(table[-3])):
+      BF = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["Best friends"]
+      CF = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["Close Friends"]
+      A = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["Acquaintance"]
+      BFP = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["BF%"]
+      CFP = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["CF%"]
+      AP = table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["A%"]
+      print((table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["Stage"])+" "+(table[-3][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[i]["Country"])+" Nearest Neighbours:\n")
+      for a in range(len(data)):
+         for m in range(len(data[a])):
+            if ((BF-.25 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["Best friends"] <= BF+.25)& 
+               (CF -.25 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["Close Friends"] <= CF+.25) &
+               (A -.25 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["Acquaintance"] <= A+.25) &
+               (BFP-5 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["BF%"] <= BFP+5) &
+               (CFP-5 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["BF%"] <= CFP+5) &
+               (AP-5 <= data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["BF%"] <= AP+5)):
+                  print((data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["Stage"])+" "+(data[a][["Stage", "Country", "Best friends", "Close Friends", "Acquaintance", "BF%", "CF%", "A%"]].iloc[m]["Country"]))
+
+
+
+original_df = pd.read_excel(r"C:\Users\User\Desktop\Data Mining\eurovision\eurovision_song_contest_1975_2017v4.xlsx")
 df = remove_bad_data(original_df)
 average_points = find_average_points_per_contestant(df)
 above_average_dict = find_when_countries_gave_above_average_points(df, average_points)
@@ -144,3 +172,4 @@ relationship_dict = classify_relationship(above_average_dict)
 performances = create_performance_database(original_df, average_points, relationship_dict)
 performances = performances_with_position(performances)
 performance_df = transform_to_df(performances)
+list_scores = GetScores(performance_df)
